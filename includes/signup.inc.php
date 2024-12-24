@@ -31,13 +31,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($errors){
             $_SESSION["errors_signup"] = $errors;
+
+            $signupData = [
+                "username" => $username,
+                "email" => $email
+            ];
+            $_SESSION["signup_data"] = $signupData;
+
             header( "Location: ../index.php");
-            die();
+            die(); // if we don't end the script here everything will be executed even though we have errors
         }
         
         create_user( $pdo,  $pwd,  $username,  $email);
 
-        header("Location: ../index.php?signup=succes");
+        header("Location: ../index.php?signup=success");
 
         $pdo = null;
         $stmt= null;
