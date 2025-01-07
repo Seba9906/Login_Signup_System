@@ -4,21 +4,23 @@ declare(strict_types = 1);
 
 function signup_inputs(){
 
-    if (isset($_SESSION["signup_data"]["username"])&& !isset($_SESSION["errors_signup"]["username_taken"])){
-        echo '<input type="text" name="username" placeholder="Username" value="' . $_SESSION["signup_data"]["username"] . '">';
+    $username_value = isset($_SESSION["signup_data"]["username"]) ? $_SESSION["signup_data"]["username"] : ''; //ternary operator
+    $email_value = $_SESSION["signup_data"]["email"] ?? ''; //coalescent null
 
-    } else {
-        echo '<input type="text" name="username" placeholder="Username">';
-    }
+if(isset($_SESSION["errors_signup"]["username_taken"])){
+    $username_value = ''; //if error, no pre-load username
+}
 
-    echo '<input type="password" name="pwd" placeholder="Password">';
+if(isset($_SESSION["errors_signup"]["email_used"]) || isset($_SESSION["errors_signup"]["invalid_email"])){
+    $email_value = '';
+}
 
-    if (isset($_SESSION["signup_data"]["email"])&& !isset($_SESSION["errors_signup"]["email_used"])&& !isset($_SESSION["errors_signup"]["invalid_email"])){
-        echo '<input type="text" name="email" placeholder="E-Mail" value="' . $_SESSION["signup_data"]["email"] . '">';
+echo <<<HTML
+    <input type="text" name="username" placeholder="Username" value="$username_value">
+    <input type="password" name="pwd" placeholder="Password">
+    <input type="text" name="email" placeholder="E-Mail" value="$email_value">
+HTML;
 
-    } else {
-        echo '<input type="text" name="email" placeholder="E-Mail">';
-    }
 
 }
 
