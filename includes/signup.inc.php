@@ -38,13 +38,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             ];
             $_SESSION["signup_data"] = $signupData;
 
-            header( "Location: ../index.php");
+            header( "Location: ../signup.php");
             die(); // if we don't end the script here everything will be executed even though we have errors
         }
         
         create_user( $pdo,  $pwd,  $username,  $email);
 
-        header("Location: ../index.php?signup=success");
+        header("Location: ../signup.php?signup=success");
 
         $pdo = null;
         $stmt= null;
@@ -56,6 +56,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
 } else {
-    header("Location: ../index.php");
+    header("Location: ../signup.php");
     die();
 }

@@ -1,23 +1,32 @@
-body{
+/* Estilos globales */
+body {
     background-color: #d3d3d3; 
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 50px;
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina relleno por defecto */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    min-height: 100vh; /* La altura mínima es igual a la ventana */
 }
-h3{
+
+h3 {
     font-size: 24px;
     margin-bottom: 20px;
     color: black;
 }
-form{
+
+/* Formulario */
+form {
     background-color: #f2f2f2;
     padding: 20px;
     margin: 20px auto;
     border-radius: 10px;
     width: 300px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-input{
+
+input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -37,13 +46,81 @@ button {
     width: 100%;
     font-size: 16px;
 }
+
 button:hover {
     background-color: #333; 
 }
 
+/* Mensajes de formulario */
 p.form-error {
     color: red; 
 }
-p.form-succes{
+
+p.form-success {
     color: green;
+}
+
+/* Navegación */
+nav {
+    background-color: #333; 
+    color: #fff;
+    padding: 1em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: auto; /* Centra horizontal y verticalmente */
+    padding: 2em;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Hace que el contenedor ocupe el espacio restante */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    border-top: 3px solid #000;
+}
+
+/* Botón de logout */
+.logout-btn {
+    background-color: #ff3b30;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #e6362a;
 }
