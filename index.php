@@ -1,3 +1,13 @@
+<?php
+require_once 'includes/config_session.inc.php';
+
+if (!isset($_SESSION['user_username'])) {
+    header("Location: signup.php");
+    exit();
+}
+
+$username = htmlspecialchars($_SESSION['user_username']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,15 +25,13 @@
             <li><a href="#">Profile</a></li>
             <li><a href="#">About</a></li>
             <li>
-                <form action="logout.php" method="POST" style="display:inline;">
-                    <button type="submit" class="logout-btn">Logout</button>
-                </form>
+                <a href="includes/logout.inc.php">Logout</a>
             </li>
         </ul>
     </nav>
 
     <div class="container">
-        <h1>Welcome to the Basic Page</h1>
+        <h1>Welcome <?php echo htmlspecialchars($username)?> to the Basic Page</h1>
         <p>This is a simple HTML template for practicing logout functionality.</p>
     </div>
 

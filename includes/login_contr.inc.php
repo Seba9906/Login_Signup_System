@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-function is_username_wrong( bool|array $result) //it's a bool when no results show up(no user matched on the db) and array when an user matches on the db
+function is_username_wrong( bool|array $result) //bool = no results show up(no user matched on the db), array= user matches on the db
 {
     return !$result;
 }

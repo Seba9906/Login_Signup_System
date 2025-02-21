@@ -1,17 +1,14 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+$env = include __DIR__ . '/../config/.env.php';
 
 ini_set('session.use_only_cookies',1);
 ini_set('session.use_strict_mode',1);
 
 session_set_cookie_params([
-    'lifetime' => (int)$_ENV['SESSION_LIFETIME'],
-    'domain' => $_ENV['SESSION_DOMAIN'],
+    'lifetime' => (int)$env['SESSION_LIFETIME'],
+    'domain' => $env['SESSION_DOMAIN'],
     'path' => '/',
-    'secure' => true,
+    'secure' => false,
     'httponly' => true
 ]);
 

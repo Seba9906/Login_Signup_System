@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($errors) {
             $_SESSION["errors_login"] = $errors;
+            var_dump(($_SESSION));
 
             header("Location: ../signup.php");
             die(); // if we don't end the script here everything will be executed even though we have errors
@@ -43,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["user_username"] = htmlspecialchars($result["username"]);
         $_SESSION["last_regeneration"] = time(); //reset session
 
-        header("Location: ../signup.php?login=success");
+        header("Location: ../index.php");
         $pdo = null;
         $stmt = null;
 

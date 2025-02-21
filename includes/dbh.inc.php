@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$env = include __DIR__ . '/../config/.env.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv -> load();
+
+
 try {
-    $dsn = "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV["DB_NAME"];
-    $pdo = new PDO($dsn, $_ENV["DB_USERNAME"],$_ENV["DB_PASSWORD"]);
+    $dsn = "mysql:host=" . $env["DB_HOST"] . ";dbname=" . $env["DB_NAME"];
+    $pdo = new PDO($dsn, $env["DB_USERNAME"],$env['DB_PASSWORD']);
 
     $pdo ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
